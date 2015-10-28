@@ -10,22 +10,17 @@ def partition(data, lo, hi):
     j = hi + 1
     v = data[lo]
 
-    while True:
+    while i < j:
         i += 1
-        while data[i] < v:
-            if i == hi:
-                break
+        while data[i] < v and i < hi:
             i += 1
 
         j -= 1
-        while v < data[j]:
-            if j == lo:
-                break
+        while data[j] >= v and j > lo:
             j -= 1
 
-        if i >= j:
-            break
-        ex(data, i, j)
+        if i < j:
+            ex(data, i, j)
 
     ex(data, lo, j)
     return j
@@ -52,5 +47,9 @@ quick_sort(data)
 print data
 
 data = [67, 34, 22, 16, 16, 22, 100, 22, 13, 15]
+quick_sort(data)
+print data
+
+data = [2, 1, 1, 1]
 quick_sort(data)
 print data
