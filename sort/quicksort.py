@@ -1,28 +1,23 @@
 
 def ex(data, i, j):
+    print data[i], '<=>', data[j]
     t = data[i]
     data[i] = data[j]
     data[j] = t
 
 
 def partition(data, lo, hi):
-    i = lo
-    j = hi + 1
-    v = data[lo]
-
-    while i < j:
-        i += 1
-        while data[i] < v and i < hi:
-            i += 1
-
-        j -= 1
-        while data[j] >= v and j > lo:
-            j -= 1
-
-        if i < j:
+    print '-' * 20
+    v = data[hi]
+    j = lo
+    print 'pivot', v
+    for i in range(lo, hi):
+        if data[i] < v:
             ex(data, i, j)
-
-    ex(data, lo, j)
+            j += 1
+        print i, j, data[lo: hi+1]
+    ex(data, j, hi)
+    print data[lo: j], data[j], data[j+1:hi]
     return j
 
 
@@ -33,7 +28,6 @@ def quick_sort(data, lo=None, hi=None):
         hi = len(data) - 1
     if lo >= hi:
         return
-
     j = partition(data, lo, hi)
     quick_sort(data, lo, j - 1)
     quick_sort(data, j + 1, hi)
