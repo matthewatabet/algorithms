@@ -10,16 +10,13 @@ def ex(data, i, j):
 def partition(data, lo, hi):
     p = random.randint(lo, hi)
     v = data[p]
+    ex(data, p, hi)
     j = lo
-    for i in range(lo, hi + 1):
+    for i in range(lo, hi):
         if data[i] < v:
             ex(data, i, j)
-            if i == p:
-                p = j
-            elif j == p:
-                p = i
             j += 1
-    ex(data, j, p)
+    ex(data, hi, j)
     return j
 
 
