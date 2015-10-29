@@ -1,23 +1,25 @@
+import random
+
 
 def ex(data, i, j):
-    print data[i], '<=>', data[j]
     t = data[i]
     data[i] = data[j]
     data[j] = t
 
 
 def partition(data, lo, hi):
-    print '-' * 20
-    v = data[hi]
+    p = random.randint(lo, hi)
+    v = data[p]
     j = lo
-    print 'pivot', v
-    for i in range(lo, hi):
+    for i in range(lo, hi + 1):
         if data[i] < v:
             ex(data, i, j)
+            if i == p:
+                p = j
+            elif j == p:
+                p = i
             j += 1
-        print i, j, data[lo: hi+1]
-    ex(data, j, hi)
-    print data[lo: j], data[j], data[j+1:hi]
+    ex(data, j, p)
     return j
 
 
@@ -45,5 +47,9 @@ quick_sort(data)
 print data
 
 data = [2, 1, 1, 1]
+quick_sort(data)
+print data
+
+data = [53, 22, 22, 13, 45, 22]
 quick_sort(data)
 print data
