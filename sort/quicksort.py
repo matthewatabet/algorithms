@@ -8,15 +8,33 @@ def ex(data, i, j):
 
 
 def partition(data, lo, hi):
+
     p = random.randint(lo, hi)
     v = data[p]
-    ex(data, p, hi)
-    j = lo
-    for i in range(lo, hi):
-        if data[i] < v:
-            ex(data, i, j)
-            j += 1
-    ex(data, hi, j)
+    ex(data, p, lo)
+
+    i = lo
+    j = hi + 1
+
+    while True:
+        i += 1
+        while data[i] < v:
+            if i >= hi:
+                break
+            i += 1
+
+        j -= 1
+        while data[j] >= v:
+            if j <= lo:
+                break
+            j -= 1
+
+        if i >= j:
+            break
+
+        ex(data, i, j)
+
+    ex(data, lo, j)
     return j
 
 
