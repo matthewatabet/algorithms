@@ -1,6 +1,3 @@
-import random
-
-
 def ex(data, i, j):
     print '%s<=>%s %s' % (i, j, data)
     t = data[i]
