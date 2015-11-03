@@ -91,17 +91,18 @@ class BinarySearchTree(object):
         self._delete(key, self.root)
 
 
-bst = BinarySearchTree()
-bst.add('C', 3)
-bst.add('B', 2)
-bst.add('A', 1)
-bst.add('H', 4)
-bst.add('E', 5)
-print bst
-bst.delete('B')
-print bst
-bst.delete('H')
-print bst
-bst.add('Q', 15)
-bst.add('T', 11)
-print bst
+if __name__ == '__main__':
+    bst = BinarySearchTree()
+    bst.add('C', 3)
+    bst.add('B', 2)
+    bst.add('A', 1)
+    bst.add('H', 4)
+    bst.add('E', 5)
+    print bst
+    bst.delete('B')
+    print bst
+    bst.delete('H')
+    print bst
+    bst.add('Q', 15)
+    bst.add('T', 11)
+    print bst
