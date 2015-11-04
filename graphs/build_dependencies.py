@@ -48,5 +48,10 @@ def build_order(dependencies):
     return build_order
 
 
-for order in build_order([('a', 'b'), ('c', 'b'), ('d', 'b'), ('b', 'e')]):
+for order in build_order([('a', 'b'),
+                          ('c', 'b'),
+                          ('d', 'b'),
+                          ('b', 'e'),
+                          ('b', 'f'),
+                          ('q', 'x')]):
     print order
