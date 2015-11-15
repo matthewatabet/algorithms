@@ -33,15 +33,15 @@ int perm(char *a, char *b)
 
 	if ( a_len != b_len ) return 0;
 	
-	int a_count[256] = {};
-	int b_count[256] = {}; 
+	int a_count[128] = {};
+	int b_count[128] = {}; 
 	
 	count(a, a_count, a_len);
 	count(b, b_count, b_len);
 
 	// compare the results.
 	int i;
-	for ( i = 0; i < 256; i++)
+	for ( i = 0; i < 128; i++)
 	{
 		if ( a_count[i] != b_count[i] )
 		{
