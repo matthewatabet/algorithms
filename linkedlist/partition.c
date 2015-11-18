@@ -12,15 +12,16 @@ struct node {
 };
 
 
+struct list {
+        struct node *head;
+};
+
+
 void node_print(struct node *n) {
         if ( NULL == n ) printf("Node: NULL\n");
         else printf("Node: %d\n", n->value);
 }
 
-
-struct list {
-        struct node *head;
-};
 
 struct node *node_new(int value) {
         struct node *n = malloc(sizeof(*n));
@@ -43,6 +44,18 @@ struct list *list_new() {
         struct list *l = malloc(sizeof(*l));
         l->head = NULL;
         return l;
+}
+
+
+void list_free(struct list *l) {
+    struct node *n = l->head;
+    struct node *current = NULL;
+    while ( NULL != n ) {
+            current = n;
+            n = n->next;
+            free(current);
+    }
+    free(l);
 }
 
 
@@ -82,6 +95,7 @@ struct node *npartition(struct node *n, int pivot, struct node **tail) {
 void partition(struct list* l, int pivot) {
         struct node **tail = malloc(sizeof(*tail));
         l->head = npartition(l->head, pivot, tail);
+        free(tail);
 }
 
 
@@ -97,5 +111,6 @@ int main() {
         list_print(l);
         partition(l, 4);
         list_print(l);
+        list_free(l);
         return 0;
 }
