@@ -45,7 +45,11 @@ int contains(struct node *n, int v) {
 struct node *remove_duplicates(struct node *n) {
 	if ( NULL == n ) return NULL;
 	n->n = remove_duplicates(n->n);
-	if ( contains(n->n, n->v) ) return n->n;
+	if ( contains(n->n, n->v) ) {
+		struct node *r = n->n;
+		free(n);
+		return r;
+	}
 	else return n;
 };
 
